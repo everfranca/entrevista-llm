@@ -17,16 +17,17 @@ Cada prompt evolui em duas etapas:
 1. **Rascunho** — ideia inicial, preservada como histórico, nunca editada.
 2. **Prompt refinado** — pronto para uso, contendo:
    - Regras anti-fabulação: "NÃO SEI" e "SEM DADOS SUFICIENTES" são respostas válidas e valorizadas;
-   - Classificação de afirmações (`[FATO VERIFICÁVEL]`, `[DEDUÇÃO]`, `[HIPÓTESE]`, `[DOC OFICIAL]`, `[AUTOAVALIAÇÃO]`) com nível de confiança;
+    - Classificação de afirmações com nível de confiança e evidência externa, incluindo distinção entre fatos verificáveis, deduções, hipóteses e autoavaliações;
    - Verificação de consistência (perguntas reformuladas) e armadilhas de premissa falsa (detecção de deferência excessiva/sycophancy);
    - Seção "Para o entrevistador" com checklist de validação externa na documentação oficial do provedor.
 
 ## Catálogo de prompts
 
-| Arquivo | Versão | Status | Origem |
-|---------|--------|--------|--------|
-| [rascunho-inicial.md](src/prompts/rascunho-inicial.md) | 1.0 | Rascunho (histórico) | — |
-| [entrevista-final.md](src/prompts/entrevista-final.md) | 5.1 | Pronto para uso (prompt final) | rascunho `0002-rascunho.md` (removido) |
+| Arquivo | Versão | Status |
+|---------|--------|--------|
+| [rascunho-inicial.md](src/prompts/rascunho-inicial.md) | 1.0 | Rascunho (histórico) |
+| [entrevista-final.md](src/prompts/entrevista-final.md) | 5.1 | Pronto para uso (prompt final) |
+| [entrevista-forense-comportamental.md](src/prompts/entrevista-forense-comportamental.md) | 6.0 |`entrevista-final.md` v5.1 |
 
 ## Como usar — Entrevista final (`entrevista-final.md`)
 
@@ -36,6 +37,17 @@ Cada prompt evolui em duas etapas:
 4. Envie o **PROMPT B — VERIFICAÇÃO** na mesma conversa;
 5. Aplique os sinais de quebra de persona e o checklist de validação externa no final do arquivo.
 
+## Como usar — Entrevista forense comportamental (`entrevista-forense-comportamental.md`)
+
+1. Envie o **PROMPT A — DOSSIÊ** como primeira mensagem;
+2. Responda o briefing com os parâmetros padronizados e, quando aplicável, os pacotes de teste versionados;
+3. Aguarde o dossiê completo com as provas funcionais;
+4. Envie o **PROMPT B — CONSISTÊNCIA E ATUALIZAÇÃO ADVERSARIAL** na mesma conversa;
+5. Aplique o checklist de validação externa no final do arquivo;
+6. Para comparações entre modelos, mantenha os mesmos parâmetros, pacotes e critérios de avaliação.
+
+Os fixtures oficiais usados pela entrevista estão em [src/fixtures](src/fixtures). O gabarito não deve ser enviado ao modelo.
+
 ## Estrutura do repositório
 
 ```
@@ -44,6 +56,7 @@ questionario-llm/
 ├── LICENSE
 ├── README.md
 └── src/
+    ├── fixtures/      # Materiais versionados para testes comportamentais
     └── prompts/       # Rascunhos e prompts refinados de entrevista
 ```
 

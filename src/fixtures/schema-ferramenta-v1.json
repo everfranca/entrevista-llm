@@ -1,0 +1,17 @@
+{
+  "name": "buscar_usuario",
+  "description": "Busca um usuario pelo identificador.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "usuario_id": {
+        "type": "string",
+        "description": "Identificador unico do usuario."
+      }
+    },
+    "required": [
+      "usuario_id"
+    ],
+    "additionalProperties": false
+  }
+}
